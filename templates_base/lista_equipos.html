@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copa Libertadores</title>
+</head>
+<body>
+    
+    <h1>
+        :
+    </h1>
+    <ul>
+        {% for cupo in cupos %}
+        <li>
+            {{ cupo.seleccion }}, {{ cupo.puntos }}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

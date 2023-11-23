@@ -13,4 +13,14 @@ def selecciones(request):
     )
     return http_response
 
+def copa(request):
+    contexto = {
+        "cupos": "Nacional",
+    }
+    http_response = render(
+        request=request,
+        template_name='lista_equipos.html',
+        context=contexto,
+    )
+    return http_response
 # Create your views here.

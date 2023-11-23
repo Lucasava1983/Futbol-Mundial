@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from control.views import selecciones
+from futbol_mundial.views import saludar_con_html
+from control.views import selecciones, copa
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("saludo/", selecciones),
+    path("selecciones/", selecciones),
+    path("copa/", copa),
 ]

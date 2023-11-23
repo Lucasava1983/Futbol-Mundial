@@ -6,11 +6,15 @@
     <title>Clasificatorias</title>
 </head>
 <body>
+    
     <h1>
         Selecciones sudamericanas:
     </h1>
     <ul>
         {% for equipo in equipos %}
+        <li>
+            {{ equipo.seleccion }}, {{ equipo.puntos }}
+        </li>
         {% endfor %}
     </ul>
 </body>
