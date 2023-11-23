@@ -8,7 +8,7 @@ def selecciones(request):
     }
     http_response = render(
         request=request,
-        template_name='lista_selecciones.html',
+        template_name='control/lista_selecciones.html',
         context=contexto,
     )
     return http_response
@@ -19,7 +19,7 @@ def copa(request):
     }
     http_response = render(
         request=request,
-        template_name='lista_equipos.html',
+        template_name='control/lista_equipos.html',
         context=contexto,
     )
     return http_response
