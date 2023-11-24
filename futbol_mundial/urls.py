@@ -22,5 +22,5 @@ from futbol_mundial.views import saludar_con_html
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('futbol/', include("control.urls")),
-    path('saludo/', saludar_con_html),
+    path('', saludar_con_html),
 ]
