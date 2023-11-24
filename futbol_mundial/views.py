@@ -1,10 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from datetime import datetime
+from control.models import Noticias
 
-def saludar_con_html(request):
+def Inicio(request):
     contexto = {
-        "equipo": "Nacional",
+        "noticia": Noticias.objects.all(),
     }
     http_response = render(
         request=request,

@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime
+from control.models import Clasificatorias, Copa_Libertadores
 
 def selecciones(request):
     contexto = {
-        "equipos": "Nacional",
+        "equipos": Clasificatorias.objects.all(),
     }
     http_response = render(
         request=request,
@@ -15,7 +16,7 @@ def selecciones(request):
 
 def copa(request):
     contexto = {
-        "cupos": "Nacional",
+        "cupos": Copa_Libertadores.objects.all(),
     }
     http_response = render(
         request=request,

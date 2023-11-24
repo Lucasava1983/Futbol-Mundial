@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 {% block titulo %}
 
 <title>
@@ -6,13 +7,15 @@
  
 {% endblock titulo %}
 {% block contenido %}
-<h1>
-   Copa Libertadores:
+<h1 style="color: rgb(6, 2, 82);">
+    <div style="text-align: center;">
+        Copa Libertadores:
+    </div>
 </h1>
 <ul>
     {% for cupo in cupos %}
     <li>
-        {{ cupo.seleccion }}, {{ cupo.puntos }}
+        {{ cupo.campeon }}, {{ cupo.año }}
     </li>
     {% endfor %}
 </ul>

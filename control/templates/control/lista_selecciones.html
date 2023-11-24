@@ -1,9 +1,15 @@
-{% block titulo %}{% endblock titulo %}
-
+{% extends "base.html" %}
+{% block titulo %}
+<title>
+    Clasificatorias
+</title>
+{% endblock titulo %}
 {% block contenido %}
 
-<h1>
-    Selecciones sudamericanas:
+<h1 style="color: rgb(6, 2, 82);">
+    <div style="text-align: center;">
+     Selecciones sudamericanas:
+    </div>
 </h1>
 <ul>
     {% for equipo in equipos %}

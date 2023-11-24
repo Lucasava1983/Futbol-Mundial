@@ -23,50 +23,55 @@
     </head>
 
     <body>
+        
                 <!-- Navigation-->
         <nav class="navbar navbar-dark bg-dark static-top">
             <div class="container">
-                    <a class="navbar-brand" href="">Inicio</a>                    
-                    <a class="navbar-brand" href="">Clasificatorias</a>
-                    <a class="navbar-brand" href="">Copa Libertadores</a>
+                    <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>                    
+                    <a class="navbar-brand" href="{% url 'selecciones' %}">Clasificatorias</a>
+                    <a class="navbar-brand" href="{% url 'copa' %}">Copa Libertadores</a>
                     <a class="navbar-brand" href="https://www.google.com">Google</a>
                     <a class="btn btn-success" href="#signup">INICIAR</a>
                 </div>
             </nav> 
 
         <section style="padding:4rem 3rem;">
-            {% block contenido %}
-            {% endblock contenido %}
+            
+                <div class="container">
+                    {% block contenido %}
+                    {% endblock contenido %}
+                </div>
+            
         </section>
 
         <!-- Footer-->
         <footer class="footer bg-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-                        <ul class="list-inline mb-2">
-                            <li class="list-inline-item"><a href="#!">Ayuda</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Contacto</a></li>
-                      
-                        </ul>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; Futbol Mundial</p>
-                    </div>
-                    <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
-                            </li>
-                            <li class="list-inline-item me-4">
-                                <a href="https://twitter.com/coderhouse"><i class="bi-twitter fs-3"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="https://www.instagram.com/futbolmundial.2109"><i class="bi-instagram fs-3"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+                <div class="container">
+                   <div class="row">
+                       <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+                           <ul class="list-inline mb-2">
+                               <li class="list-inline-item"><a href="#!">Ayuda</a></li>
+                               <li class="list-inline-item">⋅</li>
+                               <li class="list-inline-item"><a href="#!">Contacto</a></li>
+                           
+                           </ul>
+                           <p class="text-muted small mb-4 mb-lg-0">&copy; Futbol Mundial</p>
+                       </div>
+                       <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+                           <ul class="list-inline mb-0">
+                               <li class="list-inline-item me-4">
+                                   <a href="#!"><i class="bi-facebook fs-3"></i></a>
+                               </li>
+                               <li class="list-inline-item me-4">
+                                   <a href="https://twitter.com/coderhouse"><i class="bi-twitter fs-3"></i></a>
+                               </li>
+                               <li class="list-inline-item">
+                                   <a href="https://www.instagram.com/futbolmundial.2109"><i class="bi-instagram fs-3"></i></a>
+                               </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
         </footer>
 
         <!-- Bootstrap core JS-->
@@ -78,6 +83,5 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
     </body>
 </html>
