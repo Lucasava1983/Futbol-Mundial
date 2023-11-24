@@ -3,7 +3,7 @@
 {% block titulo %}
 <title> Futbol Mundial - Inicio</title>
 {% endblock titulo %}
-
+ 
 {% block contenido %}
 
 <h1 style="color: rgb(6, 2, 82);">
@@ -11,4 +11,26 @@
     Últimas Noticias:
 </div>
 </h1>
+<h3>
+    <div class="container"></div>
+    <ul>
+        {% for noticias in noticia %}
+        <h5>
+        <li>{{noticias.imagen}}
+        
+            {{noticias.fecha}}
+        </h5>
+        <br>
+        <h2>
+            {{noticias.titulo}}
+        </h2>
+        <br>
+        <h3>
+            {{noticias.subtitulo}}
+        </h3>
+        </li>
+        {% endfor %}
+    </ul>
+    </div>
+</h3>
 {% endblock contenido %}

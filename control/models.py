@@ -10,7 +10,7 @@ class Noticias(models.Model):
     imagen=models.ImageField(upload_to='fotos')
 
     def __str__(self):
-        return f'{self.titulo}, {self.subtitulo}'
+        return f'{self.titulo}, {self.subtitulo}, {self.imagen}, {self.fecha}'
 
 class Clasificatorias(models.Model):
     seleccion=models.CharField(max_length=100)
