@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<div class="container">
+<form method="post">
+  {% csrf_token %}
+  <p>Seleccion</p>
+  <input type="text" name="seleccion">
+  <p>Partidos ganados</p>
+  <input type="number" name="partidos ganados" step="1">
+  <p>Partidos empatados</p>
+  <input type="number" name="partidos empatados" step="1">
+  <p>Partidos perdidos</p>
+  <input type="number" name="partidos perdidos" step="1">
+  <p>Puntos</p>
+  <input type="number" name="puntos" step="1">
+  <input type="submit" value="Guardar">
+</form>
+</div>
+{% endblock contenido %}

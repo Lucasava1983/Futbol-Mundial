@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block contenido %} 
+<div class="container">
+<form method="post">
+  {% csrf_token %}
+  <p>Campeón</p>
+  <input type="text" name="campeon">
+  <p>Subcampeón</p>
+  <input type="text" name="subcampeon">
+  <p>Año</p>
+  <input type="number" name="año" step="1">
+  <p>Sede</p>
+  <input type="text" name="sede">
+  <input type="submit" value="Guardar">
+</form>
+</div>
+{% endblock contenido %}
