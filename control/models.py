@@ -14,9 +14,9 @@ class Noticias(models.Model):
 
 class Clasificatorias(models.Model):
     seleccion=models.CharField(max_length=100)
-    partidos_ganados=models.IntegerField()
-    partidos_empatados=models.IntegerField()
-    partidos_perdidos=models.IntegerField()
+    ganados=models.IntegerField()
+    empatados=models.IntegerField()
+    perdidos=models.IntegerField()
     puntos=models.IntegerField()
 
     def __str__(self):
@@ -25,7 +25,7 @@ class Clasificatorias(models.Model):
 class Copa_Libertadores(models.Model):
     campeon=models.CharField(max_length=150)
     subcampeon=models.CharField(max_length=150)
-    año=models.DateField(null=True)
+    año=models.IntegerField()
     sede=models.CharField(max_length=250)
 
     def __str__(self):

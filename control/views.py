@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.http import HttpResponse
-from datetime import datetime
 from control.models import Clasificatorias, Copa_Libertadores
 
 def selecciones(request):
@@ -31,26 +29,26 @@ def crear_equipo(request):
         data = request.POST
         cupos = Copa_Libertadores(campeon=data['campeon'], subcampeon=data['subcampeon'], año=data['año'], sede=data['sede'])
         cupos.save()
-        url_exitosa = reverse('lista_equipos')
+        url_exitosa = reverse('copa')
         return redirect(url_exitosa)
     else:
-        http_response = render(
-        request=request,
-        template_name='control/formulario_equipos.html',
+            http_response = render(
+            request=request,
+            template_name='control/formulario_equipos.html',
     )
     return http_response
 
 def crear_seleccion(request):
     if request.method == "POST":
        data = request.POST
-       cupos = Clasificatorias(seleccion=data['seleccion'], partidos_ganados=data['partidos_ganados'], partidos_empatados=data['partidos_empatados'], partidos_perdidos=data['partidos_perdidos'], puntos=data['puntos'])
-       cupos.save()
-       url_exitosa = reverse('lista_selecciones')
+       equipos = Clasificatorias(seleccion=data['seleccion'], ganados=data['ganados'], empatados=data['empatados'], perdidos=data['perdidos'], puntos=data['puntos'])
+       equipos.save()
+       url_exitosa = reverse('selecciones')
        return redirect(url_exitosa)
     else:
-        http_response = render(
-        request=request,
-        template_name='control/formulario_selecciones.html',
+            http_response = render(
+            request=request,
+            template_name='control/formulario_selecciones.html',
     )
     return http_response
 

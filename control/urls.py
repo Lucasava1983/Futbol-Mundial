@@ -1,6 +1,5 @@
 from django.urls import path
-from control.views import selecciones, copa, crear_seleccion, crear_equipo
-
+from control.views import selecciones, copa, crear_equipo, crear_seleccion
 urlpatterns = [
     path("selecciones/", selecciones, name="selecciones"),
     path("copa/", copa, name="copa"),
