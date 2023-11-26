@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from futbol_mundial.views import Inicio
+from control.views import Inicio
 
 
 urlpatterns = [
