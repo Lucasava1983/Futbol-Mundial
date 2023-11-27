@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from control.models import Clasificatorias, Copa_Libertadores, Noticias
+from control.forms import CrearEquipo, CrearSeleccion
 
 def selecciones(request):
     contexto = {
@@ -37,29 +38,46 @@ def copa(request):
 # Create your views here.
 def crear_equipo(request):
     if request.method == "POST":
-        data = request.POST
-        cupos = Copa_Libertadores(campeon=data['campeon'], subcampeon=data['subcampeon'], año=data['año'], sede=data['sede'])
-        cupos.save()
-        url_exitosa = reverse('copa')
-        return redirect(url_exitosa)
+        formulario = CrearEquipo(request.POST)
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            campeon = data["campeon"]
+            subcampeon = data["subcampeon"]
+            año = data["año"]
+            sede = data["sede"]
+            cupos = Copa_Libertadores(campeon=campeon, subcampeon=subcampeon, año=año, sede=sede)
+            cupos.save()
+            url_exitosa = reverse('copa')
+            return redirect(url_exitosa)
     else:
+            formulario=CrearEquipo()
             http_response = render(
             request=request,
             template_name='control/formulario_equipos.html',
+            context={'formulario':formulario }
     )
     return http_response
 
 def crear_seleccion(request):
     if request.method == "POST":
-       data = request.POST
-       equipos = Clasificatorias(seleccion=data['seleccion'], ganados=data['ganados'], empatados=data['empatados'], perdidos=data['perdidos'], puntos=data['puntos'])
-       equipos.save()
-       url_exitosa = reverse('selecciones')
-       return redirect(url_exitosa)
+       formulario = CrearSeleccion(request.POST)
+       if formulario.is_valid():
+            data = formulario.cleaned_data
+            seleccion = data["seleccion"]
+            ganados = data["ganados"]
+            empatados = data["empatados"]
+            perdidos = data["perdidos"]
+            puntos = data["puntos"]
+            equipos = Clasificatorias(seleccion=seleccion, ganados=ganados, empatados=empatados, perdidos=perdidos, puntos=puntos)
+            equipos.save()
+            url_exitosa = reverse('selecciones')
+            return redirect(url_exitosa)
     else:
+            formulario=CrearSeleccion()
             http_response = render(
             request=request,
             template_name='control/formulario_selecciones.html',
+            context={'formulario':formulario }
     )
     return http_response
 

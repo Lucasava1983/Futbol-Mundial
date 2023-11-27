@@ -1,18 +1,17 @@
 {% extends "base.html" %}
 
+{% block titulo %}
+Crear equipo
+{% endblock titulo %}
+
 {% block contenido %} 
 <div class="container">
 <form method="post">
   {% csrf_token %}
-  <p>Campeón</p>
-  <input type="text" name="campeon">
-  <p>Subcampeón</p>
-  <input type="text" name="subcampeon">
-  <p>Año</p>
-  <input type="number" name="año" step="1">
-  <p>Sede</p>
-  <input type="text" name="sede">
-  <input type="submit" value="Guardar">
+  {{ formulario.as_p }}
+  <input class="btn btn-success" type="submit" value="Guardar"/>
 </form>
+<br>
+<a href="{% url 'copa' %}">Volver</a>
 </div>
 {% endblock contenido %}
