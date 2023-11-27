@@ -81,3 +81,17 @@ def crear_seleccion(request):
     )
     return http_response
 
+def buscar_equipo(request):
+     if request.method == "POST":
+          data = request.POST
+          busqueda = data["busqueda"]
+          cupos = Copa_Libertadores.objects.filter(
+               Q(campeon=busqueda) | Q(subcampeon=busqueda) | Q(año__contains=busqueda) | Q(sede=busqueda)
+
+          contexto = {
+               "cupos": cupos,
+          }
+          http_response = render(
+               
+          )
+          )
