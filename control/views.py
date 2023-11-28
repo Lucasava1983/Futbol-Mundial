@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from control.models import Clasificatorias, Copa_Libertadores, Noticias
 from control.forms import CrearEquipo, CrearSeleccion
+from django.db.models import Q
 
 def selecciones(request):
     contexto = {
@@ -82,16 +83,35 @@ def crear_seleccion(request):
     return http_response
 
 def buscar_equipo(request):
-     if request.method == "POST":
-          data = request.POST
-          busqueda = data["busqueda"]
-          cupos = Copa_Libertadores.objects.filter(
-               Q(campeon=busqueda) | Q(subcampeon=busqueda) | Q(año__contains=busqueda) | Q(sede=busqueda)
+    if request.method == "POST":
+        data = request.POST
+        busqueda = data["busqueda"]
+        cupos = Copa_Libertadores.objects.filter(
+             Q(campeon=busqueda) | Q(subcampeon=busqueda) | Q(año__contains=busqueda) | Q(sede=busqueda)
+            )
+        contexto = {
+             "cupos": cupos,
+        }
+        http_response = render(
+             request=request,
+             template_name='control/lista_equipos.html',
+             context=contexto,              
+        )
+        return http_response
 
-          contexto = {
-               "cupos": cupos,
-          }
-          http_response = render(
-               
-          )
-          )
+def buscar_seleccion(request):
+    if request.method == "POST":
+        data = request.POST
+        busqueda = data["busqueda"]
+        equipos = Clasificatorias.objects.filter(
+             Q(seleccion=busqueda) | Q(ganados=busqueda) | Q(emparados=busqueda) | Q(perdidos=busqueda) | Q(puntos=busqueda)
+        )
+        contexto = {
+             "equipos": equipos,
+        }
+        http_response = render(
+             request=request,
+             template_name='control/lista_selecciones.html',
+             context=contexto,              
+        )
+        return http_response
