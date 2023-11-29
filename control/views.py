@@ -45,8 +45,8 @@ def crear_equipo(request):
             campeon = data["campeon"]
             subcampeon = data["subcampeon"]
             año = data["año"]
-            sede = data["sede"]
-            cupos = Copa_Libertadores(campeon=campeon, subcampeon=subcampeon, año=año, sede=sede)
+            estadio = data["estadio"]
+            cupos = Copa_Libertadores(campeon=campeon, subcampeon=subcampeon, año=año, estadio=estadio)
             cupos.save()
             url_exitosa = reverse('copa')
             return redirect(url_exitosa)
@@ -103,7 +103,6 @@ def buscar_equipos(request):
         
         return http_response
     
-    
 def buscar_seleccion(request):
     if request.method == "POST":
         data = request.POST
@@ -123,4 +122,52 @@ def buscar_seleccion(request):
             context=contexto,
         )
         
-        return http_response        
+        return http_response
+    
+def eliminar_equipo(request, id):
+    cupos = Copa_Libertadores.objects.get(id=id)
+    if request.method == "POST":
+        
+        cupos.delete()
+        
+        url_exitosa = reverse('copa')
+        return redirect(url_exitosa)
+    
+def eliminar_seleccion(request, id):
+    equipos = Clasificatorias.objects.get(id=id)
+    if request.method == "POST":
+        
+        equipos.delete()
+        
+        url_exitosa = reverse('selecciones')
+        return redirect(url_exitosa)
+    
+def editar_equipo(request, id):
+    cupos = Copa_Libertadores.objects.get(id=id)
+    if request.method == "POST":
+        formulario = CrearEquipo(request.POST)
+        
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            cupos.campeon = data['campeon']
+            cupos.subcampeon = data['subcampeon']
+            cupos.año = data['año']
+            cupos.estadio = data['estadio']
+            cupos.save()
+            
+            url_exitosa = reverse('copa')
+            return redirect(url_exitosa)
+    else:
+        inicial = {
+            'campeon': cupos.campeon,
+            'subcampeon': cupos.subcampeon,
+            'año': cupos.año,
+            'estadio': cupos.estadio,
+        }          
+        
+        formulario = CrearEquipo(initial=inicial)
+    return render(
+        request=request,
+        template_name='control/formulario_equipos.html',
+        context={'formulario': formulario},
+    )

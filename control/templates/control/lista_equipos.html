@@ -21,6 +21,7 @@
   <input type="submit" value="Buscar">
 </form>
 <br>
+<div class="container">
 <table class="table">
   <tbody>
     <tr>
@@ -28,17 +29,27 @@
       <th>Subcampeon</th>
       <th>Año</th>
       <th>Estadio</th>
+      <th></th>
+      <th></th>
     </tr>
     {% for cupo in cupos %}
     <tr> 
       <td>{{ cupo.campeon }}</td>
       <td>{{ cupo.subcampeon }}</td>  
       <td>{{ cupo.año }}</td>  
-      <td>{{ cupo.estadio }}</td>       
-         
-
+      <td>{{ cupo.estadio }}</td> 
+      <td>
+        <a class="btn btn-link" href="{% url 'editar_equipo' cupo.id %}">Editar</a>
+      </td>  
+      <td>
+        <form action="{% url 'eliminar_equipo' cupo.id %}" method="post">
+          {% csrf_token %}   
+          <input type="submit" class="btn btn-link" value="eliminar"/>
+        </form>
+      </td>
     </tr>
   {% endfor %}
   </tbody>
-</table>  
+</table> 
+</div> 
 {% endblock contenido %}
