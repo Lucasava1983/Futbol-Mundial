@@ -21,11 +21,24 @@
   <input type="submit" value="Buscar">
 </form>
 <br>
-<ul>
-{% for cupo in cupos %}
-    <li>
-      {{ cupo.campeon }}, {{ cupo.año }}
-    </li>
-{% endfor %}
-</ul>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Campeon</th>
+      <th>Subcampeon</th>
+      <th>Año</th>
+      <th>Estadio</th>
+    </tr>
+    {% for cupo in cupos %}
+    <tr> 
+      <td>{{ cupo.campeon }}</td>
+      <td>{{ cupo.subcampeon }}</td>  
+      <td>{{ cupo.año }}</td>  
+      <td>{{ cupo.estadio }}</td>       
+         
+
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>  
 {% endblock contenido %}

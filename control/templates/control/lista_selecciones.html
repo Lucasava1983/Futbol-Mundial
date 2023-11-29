@@ -20,11 +20,24 @@
   <input type="submit" value="Buscar">
 </form>
 <br>
-<ul>
-    {% for equipo in equipos %}
-    <li>
-        {{ equipo.seleccion }}, {{ equipo.puntos }}
-    </li>
+<table class="table">
+    <tbody>
+      <tr>
+        <th>Seleccion</th>
+        <th>Ganados</th>
+        <th>Empatados</th>
+        <th>Perdidos</th>
+        <th>Puntos</th>
+      </tr>
+      {% for equipo in equipos %}
+      <tr> 
+        <td>{{ equipo.seleccion }}</td>
+        <td>{{ equipo.ganados }}</td>  
+        <td>{{ equipo.empatados }}</td>  
+        <td>{{ equipo.perdidos }}</td>   
+        <td>{{ equipo.puntos }}</td>   
+      </tr>
     {% endfor %}
-</ul>
+    </tbody>
+  </table>  
 {% endblock contenido %}
