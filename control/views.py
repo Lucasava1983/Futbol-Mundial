@@ -75,29 +75,52 @@ def crear_seleccion(request):
             return redirect(url_exitosa)
     else:
         formulario=CrearSeleccion()
-    http_response = render(
+        http_response = render(
         request=request,
         template_name='control/formulario_selecciones.html',
         context={'formulario':formulario }
     )
     return http_response
 
-def buscar_equipo(request):
+def buscar_equipos(request):
     if request.method == "POST":
         data = request.POST
         busqueda = data["busqueda"]
-         
+        
         cupos = Copa_Libertadores.objects.filter(
-            Q (campeon__contains=busqueda) | Q (subcampeon__contains=busqueda) | Q (año__contains=busqueda) | Q (sede__contains=busqueda)
-            )
-         
+            Q(campeon__contains=busqueda) | Q(subcampeon__contains=busqueda) | Q(año__contains=busqueda) | Q(sede__contains=busqueda)
+        )
+        
         contexto = {
-             "cupos" : cupos,
+            "cupos": cupos,
         }
-         
+        
         http_response = render(
             request=request,
             template_name='control/lista_equipos.html',
             context=contexto,
         )
+        
         return http_response
+    
+    
+def buscar_seleccion(request):
+    if request.method == "POST":
+        data = request.POST
+        busqueda = data["busqueda"]
+        
+        equipos = Clasificatorias.objects.filter(
+            Q(seleccion__contains=busqueda) | Q(ganados__contains=busqueda) | Q(empatados__contains=busqueda) | Q(perdidos__contains=busqueda) | Q(puntos__contains=busqueda)
+        )
+        
+        contexto = {
+            "equipos": equipos,
+        }
+        
+        http_response = render(
+            request=request,
+            template_name='control/lista_selecciones.html',
+            context=contexto,
+        )
+        
+        return http_response        
