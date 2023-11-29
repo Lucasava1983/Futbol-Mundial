@@ -26,7 +26,7 @@ class Copa_Libertadores(models.Model):
     campeon=models.CharField(max_length=150)
     subcampeon=models.CharField(max_length=150)
     año=models.IntegerField()
-    sede=models.CharField(max_length=250)
+    estadio=models.CharField(max_length=250)
 
     def __str__(self):
         return f'{self.campeon}, {self.año}'

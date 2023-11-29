@@ -88,7 +88,7 @@ def buscar_equipos(request):
         busqueda = data["busqueda"]
         
         cupos = Copa_Libertadores.objects.filter(
-            Q(campeon__contains=busqueda) | Q(subcampeon__contains=busqueda) | Q(año__contains=busqueda) | Q(sede__contains=busqueda)
+            Q(campeon__contains=busqueda) | Q(subcampeon__contains=busqueda) | Q(año__contains=busqueda) | Q(estadio__contains=busqueda)
         )
         
         contexto = {
