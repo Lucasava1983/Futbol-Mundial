@@ -74,11 +74,11 @@ def crear_seleccion(request):
             url_exitosa = reverse('selecciones')
             return redirect(url_exitosa)
     else:
-            formulario=CrearSeleccion()
-            http_response = render(
-            request=request,
-            template_name='control/formulario_selecciones.html',
-            context={'formulario':formulario }
+        formulario=CrearSeleccion()
+    http_response = render(
+        request=request,
+        template_name='control/formulario_selecciones.html',
+        context={'formulario':formulario }
     )
     return http_response
 
@@ -86,32 +86,18 @@ def buscar_equipo(request):
     if request.method == "POST":
         data = request.POST
         busqueda = data["busqueda"]
+         
         cupos = Copa_Libertadores.objects.filter(
-             Q(campeon=busqueda) | Q(subcampeon=busqueda) | Q(año__contains=busqueda) | Q(sede=busqueda)
+            Q (campeon__contains=busqueda) | Q (subcampeon__contains=busqueda) | Q (año__contains=busqueda) | Q (sede__contains=busqueda)
             )
+         
         contexto = {
-             "cupos": cupos,
+             "cupos" : cupos,
         }
+         
         http_response = render(
-             request=request,
-             template_name='control/lista_equipos.html',
-             context=contexto,              
-        )
-        return http_response
-
-def buscar_seleccion(request):
-    if request.method == "POST":
-        data = request.POST
-        busqueda = data["busqueda"]
-        equipos = Clasificatorias.objects.filter(
-             Q(seleccion=busqueda) | Q(ganados=busqueda) | Q(emparados=busqueda) | Q(perdidos=busqueda) | Q(puntos=busqueda)
-        )
-        contexto = {
-             "equipos": equipos,
-        }
-        http_response = render(
-             request=request,
-             template_name='control/lista_selecciones.html',
-             context=contexto,              
+            request=request,
+            template_name='control/lista_equipos.html',
+            context=contexto,
         )
         return http_response

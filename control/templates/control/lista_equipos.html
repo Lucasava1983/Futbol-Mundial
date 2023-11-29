@@ -13,8 +13,9 @@
     </div>
 </h1>
 <a href="{% url 'copa' %}">Ver Todos</a>
-<a href="{% url 'crear_equipo'}">Guardar</a>
+<a href="{% url 'crear_equipo' %}">Guardar</a>
 <br><br>
+
 <form action="{% url buscar_equipo %}" method="post">
     {% csrf_token %}
     <input type="text" name="busqueda">
@@ -22,10 +23,10 @@
 </form>
 <br>
 <ul>
-    {% for cupo in cupos %}
+{% for cupo in cupos %}
     <li>
-        {{ cupo.campeon }}, {{ cupo.año }}
+      {{ cupo.campeon }}, {{ cupo.sede }}
     </li>
-    {% endfor %}
+{% endfor %}
 </ul>
 {% endblock contenido %}
