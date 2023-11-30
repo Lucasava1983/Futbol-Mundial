@@ -171,3 +171,35 @@ def editar_equipo(request, id):
         template_name='control/formulario_equipos.html',
         context={'formulario': formulario},
     )
+    
+def editar_seleccion(request, id):
+    equipos = Clasificatorias.objects.get(id=id)
+    if request.method == "POST":
+        formulario = CrearSeleccion(request.POST)
+        
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            equipos.seleccion = data['seleccion']
+            equipos.ganados = data['ganados']
+            equipos.empatados = data['empatados']
+            equipos.perdidos = data['perdidos']
+            equipos.puntos = data['puntos']
+            equipos.save()
+            
+            url_exitosa = reverse('selecciones')
+            return redirect(url_exitosa)
+    else:
+        inicial = {
+            'seleccion': equipos.seleccion,
+            'ganados': equipos.ganados,
+            'empatados': equipos.empatados,
+            'perdidos': equipos.perdidos,
+            'puntos': equipos.puntos,
+        }          
+        
+        formulario = CrearSeleccion(initial=inicial)
+    return render(
+        request=request,
+        template_name='control/formulario_selecciones.html',
+        context={'formulario': formulario},
+    )
