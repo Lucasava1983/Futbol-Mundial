@@ -3,48 +3,60 @@
 {% block titulo %}
 <title> Futbol Mundial - Inicio</title>
 {% endblock titulo %}
- 
+
 {% block contenido %}
 
 <h1 style="color: rgb(6, 2, 82);">
 
 <div style="text-align: center;">
     Últimas Noticias:
+
 </div>
 </h1>
-<div class="container">    
-    <ul>
-        {% for noticias in noticia %}
-    <div class="container">
-        <h6>
-        <li>
-          <p> {{noticias.fecha}}</p>
-        </h6>
-    </div>
-        <br>
-        <div class="container">
-        <h2>
-        
-        <p style="color: rgb(20, 14, 14);">
-           {{noticias.titulo}}
-        </p>
-        </h2>
-    </div>
-        <br>
-    <div class="container">
-        <h4>        
-          <p style="color: rgb(53, 48, 48);">
-            {{noticias.subtitulo|truncatewords:10}}
-        </p>
-        </h4>
-    </div>
-        <h5>
-            {{ noticias.articulo }}
-        </h5>
-        <a href="{% url 'selecciones' %}">Ver Todos</a>
-        </li>
-        {% endfor %}
-    </ul>
-   
-</div>
+
+<br>
+    <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                <a href="{% url 'crear_noticia' %}">Crear noticia</a>
+                <ul>
+                    {% for noticias in object_list %}
+                <div class="container">
+                    <h6>
+                    <li>
+                      <p> {{noticias.fecha}}</p>
+                    </h6>
+                </div>
+                    <br>
+                    <div class="container">
+                    <h2>
+                    
+                    <p style="color: rgb(20, 14, 14);">
+                       {{noticias.titulo}}
+                    </p>
+                    </h2>
+                </div>
+                    <br>
+                <div class="container">
+                    <h4>        
+                      <p style="color: rgb(53, 48, 48);">
+                        {{noticias.subtitulo|truncatewords:10}}
+                    </p>
+                    </h4>
+                </div>
+                    <h6>
+                        
+                    </h6> 
+                    <p class="post-meta" style="color: rgb(71, 63, 63);">
+                        Posteado por: {{noticias.autor}} 
+                    </p>                   
+                    <a href="{% url 'selecciones' %}">Ver Todos</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <hr class="my-4">
+                </div>
+            </div> 
+        </div>
+
 {% endblock contenido %}

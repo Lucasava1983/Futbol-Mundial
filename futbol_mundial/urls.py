@@ -16,11 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from control.views import Inicio
-
+from futbol_mundial.views import InicioListView, InicioCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('futbol/', include("control.urls")),
-    path('', Inicio, name='inicio'),
+    path('', InicioListView.as_view(), name='inicio'),
+    path('', InicioCreateView.as_view(), name='crear_noticia'),
+    
 ]

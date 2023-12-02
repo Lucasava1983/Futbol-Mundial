@@ -3,7 +3,7 @@ from django.urls import reverse
 from control.models import Clasificatorias, Copa_Libertadores, Noticias
 from control.forms import CrearEquipo, CrearSeleccion
 from django.db.models import Q
-from django.views.generic import ListView, CreateView, DeleteView, DetailView, UpdateView
+
 
 def selecciones(request):
     contexto = {
@@ -204,5 +204,4 @@ def editar_seleccion(request, id):
         template_name='control/formulario_selecciones.html',
         context={'formulario': formulario},
     )
-    
     
