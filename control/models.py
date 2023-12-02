@@ -3,11 +3,10 @@ from django.db import models
 # Create your models here.
 class Noticias(models.Model):
     titulo=models.CharField(max_length=150)
-    slug = models.SlugField(unique=True)
     subtitulo=models.CharField(max_length=200)
     articulo=models.CharField(max_length=1500)
     autor=models.CharField(max_length=250)
-    fecha=models.DateTimeField(auto_now_add=True)
+    fecha=models.DateTimeField(auto_now=True)
     imagen=models.ImageField(upload_to='fotos')
 
     def __str__(self):
