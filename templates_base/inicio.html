@@ -7,30 +7,44 @@
 {% block contenido %}
 
 <h1 style="color: rgb(6, 2, 82);">
+
 <div style="text-align: center;">
     Últimas Noticias:
 </div>
 </h1>
-<h3>
-    <div class="container"></div>
+<div class="container">    
     <ul>
         {% for noticias in noticia %}
-        <h5>
-        <li>{{noticias.imagen}}
-        
-            {{noticias.fecha}}
-        </h5>
+    <div class="container">
+        <h6>
+        <li>
+          <p> {{noticias.fecha}}</p>
+        </h6>
+    </div>
         <br>
+        <div class="container">
         <h2>
-            {{noticias.titulo}}
+        
+        <p style="color: rgb(20, 14, 14);">
+           {{noticias.titulo}}
+        </p>
         </h2>
+    </div>
         <br>
-        <h3>
-            {{noticias.subtitulo}}
-        </h3>
+    <div class="container">
+        <h4>        
+          <p style="color: rgb(53, 48, 48);">
+            {{noticias.subtitulo|truncatewords:10}}
+        </p>
+        </h4>
+    </div>
+        <h5>
+            {{ noticias.articulo }}
+        </h5>
+        <a href="{% url 'selecciones' %}">Ver Todos</a>
         </li>
         {% endfor %}
     </ul>
-    </div>
-</h3>
+   
+</div>
 {% endblock contenido %}

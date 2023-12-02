@@ -2,7 +2,6 @@
 {% block titulo %}
 
 <title>
-    Copa Libertadores
 </title> 
 {% endblock titulo %}
 
@@ -44,7 +43,7 @@
       <td>
         <form action="{% url 'eliminar_equipo' cupo.id %}" method="post">
           {% csrf_token %}   
-          <input type="submit" class="btn btn-danger" value="eliminar"/>
+          <input type="submit" class="btn btn-danger" value="Eliminar"/>
         </form>
       </td>
     </tr>

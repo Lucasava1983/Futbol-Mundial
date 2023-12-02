@@ -13,5 +13,5 @@ urlpatterns = [
     path("eliminar-equipo/<int:id>/", eliminar_equipo, name="eliminar_equipo"),
     path("eliminar-seleccion/<int:id>/", eliminar_seleccion, name="eliminar_seleccion"),
     path("editar-equipo/<int:id>/", editar_equipo, name="editar_equipo"), 
-    path("editar-seleccion/<int:id>/", editar_seleccion, name="editar_seleccion"),   
+    path("editar-seleccion/<int:id>/", editar_seleccion, name="editar_seleccion"), 
 ]
