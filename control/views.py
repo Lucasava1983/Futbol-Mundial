@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from control.models import Clasificatorias, Copa_Libertadores, Noticias
+from control.models import Clasificatorias, Copa_Libertadores
 from control.forms import CrearEquipo, CrearSeleccion
 from django.db.models import Q
 
@@ -12,17 +12,6 @@ def selecciones(request):
     http_response = render(
         request=request,
         template_name='control/lista_selecciones.html',
-        context=contexto,
-    )
-    return http_response
-
-def Inicio(request):
-    contexto = {
-        "noticia": Noticias.objects.all(),
-    }
-    http_response = render(
-        request=request,
-        template_name='inicio.html',
         context=contexto,
     )
     return http_response

@@ -21,36 +21,28 @@
                 <a href="{% url 'crear_noticia' %}">Crear noticia</a>
                 <ul>
                     {% for noticias in object_list %}
-                <div class="container">
-                    <h6>
-                    <li>
-                      <p> {{noticias.fecha}}</p>
-                    </h6>
-                </div>
-                    <br>
-                    <div class="container">
-                    <h2>
+               
+                    <div class="post-preview">
+                        
+                            <h2 class="post-title">{{noticias.titulo}}</h2>
+                            <h3 class="post-subtitle">{{noticias.subtitulo|truncatewords:10}}</h3>
+                            <a href="{% url 'noticias' noticias.id}">leer mas</a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="#!"> {{noticias.autor}} </a>
+                            on {{noticias.fecha}}
+                        </p>
+                    </div>
                     
-                    <p style="color: rgb(20, 14, 14);">
-                       {{noticias.titulo}}
-                    </p>
-                    </h2>
-                </div>
                     <br>
                 <div class="container">
                     <h4>        
                       <p style="color: rgb(53, 48, 48);">
-                        {{noticias.subtitulo|truncatewords:10}}
+                        
                     </p>
                     </h4>
-                </div>
-                    <h6>
-                        
-                    </h6> 
-                    <p class="post-meta" style="color: rgb(71, 63, 63);">
-                        Posteado por: {{noticias.autor}} 
-                    </p>                   
-                    <a href="{% url 'selecciones' %}">Ver Todos</a>
+                </div>   
+                    
                     </li>
                     {% endfor %}
                 </ul>

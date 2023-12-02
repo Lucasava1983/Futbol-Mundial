@@ -24,3 +24,6 @@ class InicioListView(ListView):
 class InicioCreateView(CreateView):
     model = Noticias
     success_url = reverse_lazy
+    
+class InicioDetailView(DetailView):
+    model = Noticias
