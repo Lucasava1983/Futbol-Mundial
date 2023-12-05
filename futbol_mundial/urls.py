@@ -24,4 +24,5 @@ urlpatterns = [
     path('', InicioListView.as_view(), name='inicio'),
     path('', InicioCreateView.as_view(), name='crear_noticia'),
     path('noticias/<int:pk>', InicioDetailView.as_view(), name="noticias"),
+    path("perfiles/", include("perfiles.urls")),
 ]
