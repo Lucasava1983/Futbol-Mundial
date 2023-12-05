@@ -29,7 +29,13 @@
                     <a class="navbar-brand" href="{% url 'selecciones' %}">Clasificatorias</a>
                     <a class="navbar-brand" href="{% url 'copa' %}">Copa Libertadores</a>
                     <a class="navbar-brand" href="https://www.google.com">Google</a>
-                    <a class="btn btn-success" href="#signup">INICIAR</a>
+                    {% if user.is_authenticated %}
+                    <a class="btn btn-danger" href="{% url 'logout' %}">Cierre Sesión</a>
+                    {% else %}
+                    <a class="btn btn-danger" href="{% url 'login' %}">Inicio Sesión</a>
+                    <a class="btn btn-danger" href="{% url 'registro' %}">Registro</a>
+                    {% endif %}
+                    
                 </div>
             </nav> 
 
