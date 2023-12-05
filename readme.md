@@ -26,6 +26,6 @@ username: lucasava_1983
 contraseña:1234ABCD
 
 # Usuarios normales
-usernama: lucasava.2109
+usernama: lucasava.2109, AngieG
 contraseña: luis1234
 
