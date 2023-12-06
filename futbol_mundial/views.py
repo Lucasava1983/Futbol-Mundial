@@ -4,6 +4,8 @@ from datetime import datetime
 from control.models import Noticias
 from django.views.generic import ListView, CreateView, DeleteView, DetailView, UpdateView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 #def Inicio(request):
 #    contexto = {
@@ -21,11 +23,11 @@ class InicioListView(ListView):
     model = Noticias
     template_name ='inicio.html'
     
-class InicioCreateView(CreateView):
+class InicioCreateView(LoginRequiredMixin, CreateView):
     model = Noticias
     success_url = reverse_lazy
     
-class InicioDetailView(DetailView):
+class InicioDetailView(LoginRequiredMixin, DetailView):
     model = Noticias
     success_url = reverse_lazy
     

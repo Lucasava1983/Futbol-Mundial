@@ -1,7 +1,12 @@
 from django.shortcuts import render, redirect
+
+
 from django.urls import reverse
 from control.models import Clasificatorias, Copa_Libertadores
 from control.forms import CrearEquipo, CrearSeleccion
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from django.db.models import Q
 
 
@@ -16,6 +21,7 @@ def selecciones(request):
     )
     return http_response
 
+
 def copa(request):
     contexto = {
         "cupos": Copa_Libertadores.objects.all(),
@@ -26,7 +32,8 @@ def copa(request):
         context=contexto,
     )
     return http_response
-# Create your views here.
+
+@login_required
 def crear_equipo(request):
     if request.method == "POST":
         formulario = CrearEquipo(request.POST)
@@ -36,7 +43,7 @@ def crear_equipo(request):
             subcampeon = data["subcampeon"]
             año = data["año"]
             estadio = data["estadio"]
-            cupos = Copa_Libertadores(campeon=campeon, subcampeon=subcampeon, año=año, estadio=estadio)
+            cupos = Copa_Libertadores(campeon=campeon, subcampeon=subcampeon, año=año, estadio=estadio, creador=request.user)
             cupos.save()
             url_exitosa = reverse('copa')
             return redirect(url_exitosa)
@@ -49,6 +56,7 @@ def crear_equipo(request):
     )
     return http_response
 
+@login_required
 def crear_seleccion(request):
     if request.method == "POST":
        formulario = CrearSeleccion(request.POST)
@@ -72,6 +80,7 @@ def crear_seleccion(request):
     )
     return http_response
 
+@login_required
 def buscar_equipos(request):
     if request.method == "POST":
         data = request.POST
@@ -93,6 +102,7 @@ def buscar_equipos(request):
         
         return http_response
     
+@login_required
 def buscar_seleccion(request):
     if request.method == "POST":
         data = request.POST
@@ -114,6 +124,7 @@ def buscar_seleccion(request):
         
         return http_response
     
+@login_required
 def eliminar_equipo(request, id):
     cupos = Copa_Libertadores.objects.get(id=id)
     if request.method == "POST":
@@ -122,7 +133,8 @@ def eliminar_equipo(request, id):
         
         url_exitosa = reverse('copa')
         return redirect(url_exitosa)
-    
+
+@login_required    
 def eliminar_seleccion(request, id):
     equipos = Clasificatorias.objects.get(id=id)
     if request.method == "POST":
@@ -131,7 +143,8 @@ def eliminar_seleccion(request, id):
         
         url_exitosa = reverse('selecciones')
         return redirect(url_exitosa)
-    
+
+@login_required    
 def editar_equipo(request, id):
     cupos = Copa_Libertadores.objects.get(id=id)
     if request.method == "POST":
@@ -161,7 +174,8 @@ def editar_equipo(request, id):
         template_name='control/formulario_equipos.html',
         context={'formulario': formulario},
     )
-    
+
+@login_required    
 def editar_seleccion(request, id):
     equipos = Clasificatorias.objects.get(id=id)
     if request.method == "POST":

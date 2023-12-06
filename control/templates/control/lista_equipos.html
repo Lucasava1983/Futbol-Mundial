@@ -38,13 +38,17 @@
       <td>{{ cupo.año }}</td>  
       <td>{{ cupo.estadio }}</td> 
       <td>
+        {% if user == cupo.creador %}
         <a class="btn btn-primary" href="{% url 'editar_equipo' cupo.id %}">Editar</a>
+        {% endif %}
       </td>  
       <td>
+        {% if user == cupo.creador %}
         <form action="{% url 'eliminar_equipo' cupo.id %}" method="post">
           {% csrf_token %}   
           <input type="submit" class="btn btn-danger" value="Eliminar"/>
         </form>
+        {% endif %}
       </td>
     </tr>
   {% endfor %}
