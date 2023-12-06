@@ -67,7 +67,7 @@ def crear_seleccion(request):
             empatados = data["empatados"]
             perdidos = data["perdidos"]
             puntos = data["puntos"]
-            equipos = Clasificatorias(seleccion=seleccion, ganados=ganados, empatados=empatados, perdidos=perdidos, puntos=puntos)
+            equipos = Clasificatorias(seleccion=seleccion, ganados=ganados, empatados=empatados, perdidos=perdidos, puntos=puntos, creador=request.user)
             equipos.save()
             url_exitosa = reverse('selecciones')
             return redirect(url_exitosa)
