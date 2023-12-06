@@ -38,12 +38,12 @@
         <td>{{ equipo.perdidos }}</td>   
         <td>{{ equipo.puntos }}</td>
         <td>
-          {% if user == equipo.creador %}
+          {% if user == equipos.creador %}
             <a class="btn btn-primary" href="{% url 'editar_seleccion' equipo.id %}">Editar</a>
           {% endif %}
           </td>  
         <td>
-          {% if user == equipo.creador %}
+          {% if user == equipos.creador %}
             <form action="{% url 'eliminar_seleccion' equipo.id %}" method="post">
               {% csrf_token %}   
               <input type="submit" class="btn btn-danger" value="Eliminar"/>
