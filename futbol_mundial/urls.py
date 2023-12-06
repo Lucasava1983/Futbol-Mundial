@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from futbol_mundial.views import InicioListView, InicioCreateView, InicioDetailView
 
 urlpatterns = [
@@ -26,3 +28,5 @@ urlpatterns = [
     path('noticias/<int:pk>', InicioDetailView.as_view(), name="noticias"),
     path("perfiles/", include("perfiles.urls")),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
